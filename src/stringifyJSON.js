@@ -7,14 +7,10 @@ var stringifyJSON = function(obj) {
   // your code goes here
   var result = '';
 
-  if (obj === null) {
-    result += 'null';
+  if (obj === null || typeof obj === 'number' || typeof obj === 'boolean') {
+    result += obj;
   } else if (typeof obj === 'string') {
     result += '"' + obj + '"';
-  } else if (typeof obj === 'number' || typeof obj === 'boolean') {
-    result += obj;
-  } else if (typeof obj === 'function') {
-    result += '';
   } else if (typeof obj === 'object') {
     
     if (Array.isArray(obj)) {
@@ -41,7 +37,5 @@ var stringifyJSON = function(obj) {
       result += '}';
     }
   }
-
-  // console.log(result);
   return result;
 };
